@@ -1,0 +1,156 @@
+.podcast-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.podcast-filter {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 80px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.podcast-filter__count {
+  font-size: 14px;
+  background-color: #384484;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  margin-right: 20px;
+}
+
+.podcast-filter__input {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 8px 16px;
+}
+
+.podcast-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 60px;
+  column-gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.podcast-list__item {
+  flex: 1 1 calc(25% - 20px);
+  max-width: calc(25% - 20px);
+  background-color: #fff;
+  border: none;
+  border-radius: 8px;
+  overflow: visible;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.podcast-list__content {
+  padding: 15px;
+  padding-top: 60px;
+  text-align: center;
+}
+
+.podcast-list__image-container {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 3px solid #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.podcast-list__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.podcast-list__title {
+  font-size: 1.1em;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.podcast-list__link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
+.podcast-list__artist {
+  font-size: 0.9em;
+  color: #666;
+}
+
+@media (max-width: 1200px) {
+  .podcast-list__item {
+    flex: 1 1 calc(33.333% - 20px);
+    max-width: calc(33.333% - 20px);
+  }
+}
+
+@media (max-width: 900px) {
+  .podcast-list__item {
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 600px) {
+  .podcast-list__item {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+
+.spinner {
+  animation: rotate 2s linear infinite;
+  width: 50px;
+  height: 50px;
+}
+
+.path {
+  stroke: #4285f4;
+  stroke-linecap: round;
+  animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}

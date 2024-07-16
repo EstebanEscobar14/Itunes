@@ -1,1 +1,35 @@
-<p>podcast-list works!</p>
+<div class="podcast-container">
+  <div class="podcast-filter">
+    <span class="podcast-filter__count">{{ filteredPodcasts.length }}</span>
+    <input
+      [(ngModel)]="searchText"
+      (input)="filterPodcasts()"
+      type="text"
+      placeholder="Filter podcasts..."
+      class="podcast-filter__input"
+    />
+  </div>
+
+  <!-- Agregamos el spinner aquí -->
+  <div *ngIf="loading; else content" class="spinner-container">
+    <svg class="spinner" viewBox="0 0 50 50">
+      <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="4"></circle>
+    </svg>
+  </div>
+
+  <ng-template #content>
+    <div class="podcast-list">
+      <div class="podcast-list__item" *ngFor="let podcast of filteredPodcasts">
+        <a class="podcast-list__link" [routerLink]="['/podcast', podcast.id.attributes['im:id']]">
+          <div class="podcast-list__content">
+            <div class="podcast-list__image-container">
+              <img class="podcast-list__image" [src]="podcast['im:image'][2].label" alt="{{ podcast.title.label }}" />
+            </div>
+            <h2 class="podcast-list__title">{{ podcast["im:name"].label | uppercase }}</h2>
+            <p class="podcast-list__artist">Author: {{ podcast["im:artist"].label }}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </ng-template>
+</div>
