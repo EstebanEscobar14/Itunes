@@ -1,1 +1,31 @@
-<p>episode-detail works!</p>
+<div *ngIf="loading; else content" class="spinner-container">
+  <svg class="spinner" viewBox="0 0 50 50">
+    <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="4"></circle>
+  </svg>
+</div>
+
+<ng-template #content>
+  <div *ngIf="episode" class="episode-detail-container">
+    <div class="episode-details-left">
+      <a [routerLink]="['/podcast', podcast?.collectionId]">
+        <img [src]="episode.artworkUrl600" alt="{{ podcast?.collectionName }}" class="episode-details-left__image" />
+        <div class="divider"></div>
+        <h2>{{ podcast?.collectionName }}</h2>
+        <p><i>By: </i>{{ podcast?.artistName }}</p>
+        <div class="divider"></div>
+      </a>
+      <p>{{ episode.trackName }}</p>
+      <div class="divider"></div>
+      <h2>Description:</h2>
+      <p>{{ episode.shortDescription }}</p>
+    </div>
+    <div class="episode-details-right">
+      <h2>{{ episode.trackName }}</h2>
+      <div [innerHTML]="episode.description"></div>
+      <audio controls>
+        <source [src]="episode.episodeUrl" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  </div>
+</ng-template>
