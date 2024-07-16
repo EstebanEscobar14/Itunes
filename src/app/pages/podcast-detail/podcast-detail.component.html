@@ -1,1 +1,53 @@
-<p>podcast-detail works!</p>
+<div *ngIf="podcastDetail" class="podcast-detail-container">
+  <div class="podcast-detail-card">
+    <img [src]="podcast?.artworkUrl600" alt="{{ podcast?.collectionName }}" class="podcast-detail-card__image" />
+    <div class="divider"></div>
+    <div class="podcast-detail-card__content">
+      <h2 class="podcast-detail-card__title">
+        {{ podcastDetail['im:name'].label }}
+      </h2>
+      <strong class="podcast-detail-card__author"><i>By: </i>{{ podcastDetail['im:artist'].label }}</strong>
+      <div class="divider"></div>
+      <h3 class="podcast-detail-card__description-title">Description:</h3>
+      <p class="podcast-detail-card__description">
+        {{ podcastDetail.summary.label }}
+      </p>
+    </div>
+  </div>
+  <div class="content-container">
+    <div class="episode-list-length">
+      <h3>Episodes: {{ episodes.length }}</h3>
+    </div>
+    <div class="episode-list">
+      <div *ngIf="loadingEpisodes; else episodeListContent" class="spinner-container">
+        <svg class="spinner" viewBox="0 0 50 50">
+          <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="4"></circle>
+        </svg>
+      </div>
+
+      <ng-template #episodeListContent>
+        <table class="episode-list__table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Date</th>
+              <th>Duration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let episode of episodes; let i = index" [ngClass]="i % 2 === 0 ? 'highlighted-row' : ''">
+              <td>
+                <a [routerLink]="['/podcast', podcast!.collectionId, 'episode', episode.trackId]"
+                  class="episode-list__link">
+                  <h4 class="episode-list__title">{{ episode.trackName }}</h4>
+                </a>
+              </td>
+              <td>{{ episode.releaseDate | date : "d/MM/yyyy" }}</td>
+              <td>{{ episode.trackTimeMillis | duration }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-template>
+    </div>
+  </div>
+</div>

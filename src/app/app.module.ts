@@ -9,6 +9,7 @@ import { EpisodeDetailComponent } from './pages/episode-detail/episode-detail.co
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
+import { DurationPipe } from './pipes/duration-pipe.pipe';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { HeaderComponent } from './components/header/header.component';
     PodcastListComponent,
     PodcastDetailComponent,
     EpisodeDetailComponent,
-    HeaderComponent
+    HeaderComponent,
+    DurationPipe
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
