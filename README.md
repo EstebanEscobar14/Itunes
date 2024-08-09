@@ -49,4 +49,4 @@ The Podcaster application is a Single Page Application (SPA) that allows users t
 The application is configured with two build modes:
 
 - **Development**: Assets are served unminified to aid in debugging and development.
-- **Production**: Assets are concatenated, minified, and optimized to improve performance and loading efficiency in production.
+- **Production**: Assets are concatenated, minified, and optimized to improve performance and loading efficiency in production project.
